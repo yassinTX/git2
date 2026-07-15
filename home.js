@@ -1,174 +1,153 @@
-// ---------- PRELOADER ----------
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
-});
+from pathlib import Path
 
-// ---------- STICKY HEADER ----------
+js = r'''/* ===============================
+   Light40X Portfolio - home.js
+================================== */
+
+// Sticky header
 const header = document.querySelector(".header");
 window.addEventListener("scroll", () => {
-  if (!header) return;
-  header.classList.toggle("scrolled", window.scrollY > 30);
+  if (header) {
+    header.style.boxShadow = window.scrollY > 20
+      ? "0 10px 30px rgba(0,0,0,.35)"
+      : "none";
+  }
 });
 
-// ---------- SMOOTH SCROLL ----------
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener("click", e => {
     const target = document.querySelector(link.getAttribute("href"));
     if (!target) return;
     e.preventDefault();
-    target.scrollIntoView({behavior:"smooth"});
+    target.scrollIntoView({ behavior: "smooth" });
   });
 });
 
-// ---------- ACTIVE NAV ----------
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-function updateActiveNav(){
-  let current = "";
-  sections.forEach(sec=>{
-    if(window.scrollY >= sec.offsetTop - 150){
-      current = sec.id;
+// Reveal on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
     }
   });
+}, { threshold: 0.15 });
 
-  navLinks.forEach(link=>{
-    link.classList.toggle(
-      "active",
-      link.getAttribute("href")==="#" + current
-    );
-  });
-}
+document.querySelectorAll("section,.card,.featured,.stats div,.skill-grid div").forEach(el => {
+  el.style.opacity = "0";
+  el.style.transform = "translateY(40px)";
+  el.style.transition = "all .7s ease";
+  observer.observe(el);
+});
 
-window.addEventListener("scroll", updateActiveNav);
-
-// ---------- REVEAL ----------
-const reveal = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("show");
-      reveal.unobserve(entry.target);
-    }
-  });
-},{threshold:.15});
-
-document.querySelectorAll("section,.card,.tool,.featured-card,.stats div")
-.forEach(el=>reveal.observe(el));
-
-// ---------- COUNTERS ----------
-document.querySelectorAll(".stats h3").forEach(counter=>{
-  const text = counter.textContent;
-  const target = parseInt(text);
-  if(isNaN(target)) return;
+// Animated counters
+document.querySelectorAll(".stats h2").forEach(counter => {
+  const original = counter.textContent;
+  const target = parseInt(original);
+  if (isNaN(target)) return;
 
   let value = 0;
 
-  const obs = new IntersectionObserver(entries=>{
-    if(!entries[0].isIntersecting) return;
+  const start = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
 
-    const timer = setInterval(()=>{
-      value += Math.ceil(target/50);
-      if(value >= target){
+    const timer = setInterval(() => {
+      value += Math.ceil(target / 50);
+
+      if (value >= target) {
         value = target;
         clearInterval(timer);
       }
-      counter.textContent = value + (text.includes("+")?"+":"");
-    },25);
 
-    obs.disconnect();
+      counter.textContent = value + (original.includes("+") ? "+" : original.includes("%") ? "%" : "");
 
-  });
+    }, 25);
 
-  obs.observe(counter);
-});
-
-// ---------- PARALLAX HERO ----------
-const heroImage = document.querySelector(".hero-image img");
-
-document.addEventListener("mousemove",e=>{
-  if(!heroImage) return;
-
-  const x=(e.clientX/window.innerWidth-.5)*15;
-  const y=(e.clientY/window.innerHeight-.5)*15;
-
-  heroImage.style.transform=
-  rotateY(${x}deg) rotateX(${-y}deg);
-});
-
-// ---------- BACK TO TOP ----------
-const topBtn=document.createElement("button");
-topBtn.innerHTML='<i class="fa-solid fa-arrow-up"></i>';
-topBtn.className="backTop";
-document.body.appendChild(topBtn);
-
-topBtn.addEventListener("click",()=>{
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-});
-
-window.addEventListener("scroll",()=>{
-  topBtn.style.opacity=window.scrollY>400?"1":"0";
-  topBtn.style.pointerEvents=window.scrollY>400?"auto":"none";
-});
-
-// ---------- RIPPLE ----------
-document.querySelectorAll(".buttons a").forEach(btn=>{
-  btn.addEventListener("click",function(e){
-
-    const ripple=document.createElement("span");
-
-    ripple.className="ripple";
-
-    const rect=this.getBoundingClientRect();
-
-    ripple.style.left=(e.clientX-rect.left)+"px";
-    ripple.style.top=(e.clientY-rect.top)+"px";
-
-    this.appendChild(ripple);
-
-    setTimeout(()=>ripple.remove(),600);
+    start.disconnect();
 
   });
+
+  start.observe(counter);
 });
 
-// ---------- TYPING ----------
-const subtitle=document.querySelector(".hero-content h2");
+// Hero image tilt
+const heroImg = document.querySelector(".hero-right img");
 
-if(subtitle){
+if (heroImg) {
 
-const original=subtitle.textContent;
+  document.addEventListener("mousemove", e => {
 
-subtitle.textContent="";
+    const x = (e.clientX / window.innerWidth - .5) * 10;
+    const y = (e.clientY / window.innerHeight - .5) * 10;
 
-let i=0;
+    heroImg.style.transform =
+      `rotateY(${x}deg) rotateX(${-y}deg)`;
 
-(function type(){
-
- if(i<original.length){
-
-   subtitle.textContent+=original.charAt(i);
-
-   i++;
-
-   setTimeout(type,55);
-
- }
-
-})();
+  });
 
 }
 
-// ---------- YEAR ----------
-const footer=document.querySelector("footer");
-if(footer){
- footer.innerHTML=footer.innerHTML.replace("2026",new Date().getFullYear());
+// Active navigation
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+
+  let current = "";
+
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 140)
+      current = sec.id;
+  });
+
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute("href") === "#" + current ? "#00D4FF" : "";
+  });
+
+});
+
+// Back to top button
+const topBtn = document.createElement("button");
+topBtn.innerHTML = "↑";
+topBtn.className = "backTop";
+
+Object.assign(topBtn.style, {
+  position: "fixed",
+  right: "20px",
+  bottom: "20px",
+  width: "50px",
+  height: "50px",
+  borderRadius: "50%",
+  border: "none",
+  background: "#4F8CFF",
+  color: "#fff",
+  fontSize: "22px",
+  cursor: "pointer",
+  display: "none",
+  zIndex: "9999"
+});
+
+document.body.appendChild(topBtn);
+
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 400 ? "block" : "none";
+});
+
+topBtn.onclick = () => window.scrollTo({
+  top: 0,
+  behavior: "smooth"
+});
+
+// Auto year
+const footer = document.querySelector("footer");
+if (footer) {
+  footer.innerHTML = footer.innerHTML.replace("2026", new Date().getFullYear());
 }
 
 console.log("Light40X Portfolio Ready 🚀");
-"""
+'''
 
-path="/mnt/data/home.js"
-Path(path).write_text(js, encoding="utf-8")
-print(path)
+out="/mnt/data/home.js"
+Path(out).write_text(js, encoding="utf-8")
+print(out)
