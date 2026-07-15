@@ -1,0 +1,314 @@
+/* ===========================
+   Light40X Privacy Policy
+=========================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+    background:linear-gradient(135deg,#071321,#0c1f38,#153c68);
+    overflow-x:hidden;
+}
+
+/* Animated Background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,174,255,.18),transparent 35%),
+        radial-gradient(circle at 80% 70%,rgba(0,102,255,.16),transparent 35%),
+        radial-gradient(circle at 50% 100%,rgba(255,255,255,.08),transparent 45%);
+    animation:bgMove 18s ease-in-out infinite alternate;
+    z-index:-2;
+}
+
+@keyframes bgMove{
+
+0%{
+transform:translateY(0);
+}
+
+100%{
+transform:translateY(-40px);
+}
+
+}
+
+/* Main Container */
+
+.container{
+
+max-width:900px;
+
+margin:60px auto;
+
+padding:45px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:25px;
+
+box-shadow:0 25px 70px rgba(0,0,0,.35);
+
+animation:fadeUp .8s ease;
+
+}
+
+/* Logo */
+
+.logo{
+
+display:block;
+
+width:100px;
+
+margin:auto;
+
+margin-bottom:25px;
+
+border-radius:20px;
+
+transition:.35s;
+
+}
+
+.logo:hover{
+
+transform:scale(1.08) rotate(-3deg);
+
+}
+
+/* Heading */
+
+h1{
+
+text-align:center;
+
+font-size:42px;
+
+font-weight:700;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+font-size:18px;
+
+color:#9bc8ff;
+
+margin-bottom:40px;
+
+}
+
+/* Sections */
+
+section{
+
+margin-bottom:35px;
+
+padding-bottom:20px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+section:last-child{
+
+border:none;
+
+}
+
+h2{
+
+color:#62c6ff;
+
+margin-bottom:15px;
+
+font-size:24px;
+
+}
+
+p{
+
+line-height:1.9;
+
+color:#dfeaff;
+
+font-size:16px;
+
+}
+
+/* Lists */
+
+ul{
+
+padding-left:25px;
+
+margin-top:15px;
+
+}
+
+li{
+
+margin:10px 0;
+
+color:#dfeaff;
+
+}
+
+/* Links */
+
+a{
+
+color:#72d8ff;
+
+font-weight:500;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+a:hover{
+
+color:white;
+
+text-decoration:underline;
+
+}
+
+/* Footer */
+
+.footer{
+
+margin-top:40px;
+
+padding-top:25px;
+
+text-align:center;
+
+border-top:1px solid rgba(255,255,255,.1);
+
+color:#9fb6d9;
+
+font-size:15px;
+
+}
+
+/* Back To Top */
+
+.top{
+
+position:fixed;
+
+right:25px;
+
+bottom:25px;
+
+width:58px;
+
+height:58px;
+
+border:none;
+
+border-radius:50%;
+
+background:#1d8cff;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+box-shadow:0 15px 35px rgba(0,0,0,.3);
+
+transition:.3s;
+
+display:none;
+
+}
+
+.top:hover{
+
+transform:translateY(-6px) scale(1.08);
+
+background:#38a6ff;
+
+}
+
+/* Fade Animation */
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.container{
+
+margin:25px 15px;
+
+padding:30px;
+
+}
+
+h1{
+
+font-size:32px;
+
+}
+
+h2{
+
+font-size:22px;
+
+}
+
+.logo{
+
+width:80px;
+
+}
+
+}
