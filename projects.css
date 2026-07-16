@@ -55,20 +55,32 @@ padding:90px 8%;
 /*==================================================
                 HEADER
 ==================================================*/
+/* HEADER */
 
 .header{
 
 position:fixed;
+
 top:0;
+
 left:0;
+
 width:100%;
-padding:18px 8%;
+
+padding:22px 8%;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
-background:rgba(8,17,31,.92);
+
+background:rgba(8,17,31,.82);
+
 backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.08);
+
+border-bottom:1px solid rgba(255,255,255,.05);
+
 z-index:999;
 
 }
