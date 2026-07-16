@@ -554,11 +554,3 @@ document.body.style.overflowX="hidden";
 
 });
 console.log("🚀 Light40X Portfolio Ready");
-
-const viewMoreBtn = document.querySelector(".view-more-btn");
-
-if (viewMoreBtn) {
-    viewMoreBtn.addEventListener("click", function () {
-        window.location.href = "projects.html";
-    });
-}
