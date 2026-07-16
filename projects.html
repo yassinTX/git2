@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Projects | Light40X</title>
+<title>Projects | Light40X Studio</title>
 
 <link rel="stylesheet" href="projects.css">
 
@@ -23,17 +23,13 @@
 
 <body>
 
-<!-- ==========================
-        HEADER
-========================== -->
-
 <header class="header">
 
 <div class="logo">
 
 <i class="fa-solid fa-gamepad"></i>
 
-<h2>Light40X</h2>
+<span>Light40X</span>
 
 </div>
 
@@ -41,71 +37,487 @@
 
 <a href="index.html">Home</a>
 
-<a href="index.html#about">About</a>
-
 <a href="projects.html" class="active">Projects</a>
 
 <a href="certificates.html">Certificates</a>
 
-<a href="index.html#contact">Contact</a>
+<a href="privacy-policy.html">Privacy Policy</a>
 
 </nav>
 
-<div class="header-icons">
+<a href="index.html" class="back-home">
 
-<a href="#"><i class="fa-brands fa-github"></i></a>
+<i class="fa-solid fa-house"></i>
 
-<a href="#"><i class="fa-brands fa-youtube"></i></a>
-
-<a href="#"><i class="fa-brands fa-discord"></i></a>
-
-<a href="mailto:yassin.diaa26@gmail.com">
-
-<i class="fa-solid fa-envelope"></i>
+Home
 
 </a>
 
-</div>
-
 </header>
 
-<!-- ==========================
-          HERO
-========================== -->
+<section class="hero">
 
-<section class="projects-hero">
+<div class="hero-content">
 
-<div class="hero-text">
-
-<h4>MY WORK</h4>
-
-<h1>
-
-Projects
-
-</h1>
+<h1>My Projects</h1>
 
 <p>
 
-Welcome to my complete portfolio.
-
-Here you'll find every game,
-
-website and programming project
-
-I've built using Unity, Godot,
-
-HTML, CSS and JavaScript.
+A collection of websites, games and creative software projects built with HTML, CSS, JavaScript, Unity and Godot.
 
 </p>
 
 <div class="hero-buttons">
 
-<a href="#allProjects" class="btn primary">
+<a href="#projects" class="btn primary">
 
 <i class="fa-solid fa-rocket"></i>
 
 Explore Projects
+
+</a>
+
+<a href="index.html" class="btn secondary">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back Home
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="search-section">
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search projects...">
+
+</div>
+
+<div class="filters">
+
+<button class="filter active" data-filter="all">All</button>
+
+<button class="filter" data-filter="website">Websites</button>
+
+<button class="filter" data-filter="unity">Unity</button>
+
+<button class="filter" data-filter="godot">Godot</button>
+
+<button class="filter" data-filter="javascript">JavaScript</button>
+
+</div>
+
+</section>
+
+<section class="featured-project">
+
+<div class="featured-image">
+
+<img src="images for home/parking.png" alt="Parking Escape Master">
+
+</div>
+
+<div class="featured-info">
+
+<span class="featured-tag">
+
+Featured Project
+
+</span>
+
+<h2>Parking Escape Master</h2>
+
+<p>
+
+A polished puzzle game developed in Unity featuring hundreds of levels, boosters, smooth animations, and optimized gameplay.
+
+</p>
+
+<div class="tech">
+
+<span>Unity</span>
+
+<span>C#</span>
+
+<span>Mobile</span>
+
+<span>Google Play</span>
+
+</div>
+
+<div class="featured-buttons">
+
+<a href="video1.html" class="btn primary">
+
+<i class="fa-solid fa-play"></i>
+
+Watch Demo
+
+</a>
+
+<a href="#" class="btn secondary">
+
+<i class="fa-brands fa-github"></i>
+
+GitHub
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="projects-grid" id="projects">
+
+<div class="project-card website">
+
+<img src="images for home/web_color.png">
+
+<div class="project-content">
+
+<h3>Counter Website</h3>
+
+<p>
+
+Simple responsive counter built using HTML CSS and JavaScript.
+
+</p>
+
+<div class="badges">
+
+<span>HTML</span>
+
+<span>CSS</span>
+
+<span>JavaScript</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video1.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-github"></i>
+
+Code
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="project-card website">
+
+<img src="images for home/losin.png">
+
+<div class="project-content">
+
+<h3>Login System</h3>
+
+<p>
+
+Modern animated login interface with responsive layout.
+
+</p>
+
+<div class="badges">
+
+<span>HTML</span>
+
+<span>CSS</span>
+
+<span>JavaScript</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video2.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-github"></i>
+
+Code
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="project-card godot">
+
+<img src="images for home/Screenshot 2026-06-30 153340.png">
+
+<div class="project-content">
+
+<h3>Magic Power</h3>
+
+<p>
+
+2D shooting game created using Godot Engine.
+
+</p>
+
+<div class="badges">
+
+<span>Godot</span>
+
+<span>GDScript</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video3.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-github"></i>
+
+Code
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="project-card unity">
+
+<img src="images for home/3d_2.png">
+
+<div class="project-content">
+
+<h3>Fight For Alive</h3>
+
+<p>
+
+3D survival shooting game built with Unity.
+
+</p>
+
+<div class="badges">
+
+<span>Unity</span>
+
+<span>C#</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video4.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-github"></i>
+
+Code
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+<div class="project-card unity">
+
+<img src="images for home/3d_1.png">
+
+<div class="project-content">
+
+<h3>Try To Win</h3>
+
+<p>
+
+A fun 3D obstacle game where players race through challenging levels.
+
+</p>
+
+<div class="badges">
+
+<span>Unity</span>
+
+<span>C#</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video5.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-github"></i>
+
+Code
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="project-card unity">
+
+<img src="images for home/parking.png">
+
+<div class="project-content">
+
+<h3>Parking Escape Master</h3>
+
+<p>
+
+A modern traffic jam puzzle game designed for Android devices.
+
+</p>
+
+<div class="badges">
+
+<span>Unity</span>
+
+<span>Android</span>
+
+<span>C#</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="video6.html">
+
+<i class="fa-solid fa-play"></i>
+
+Demo
+
+</a>
+
+<a href="#">
+
+<i class="fa-brands fa-google-play"></i>
+
+Coming Soon
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="stats">
+
+<div class="stat">
+
+<h2>10+</h2>
+
+<p>Projects</p>
+
+</div>
+
+<div class="stat">
+
+<h2>3</h2>
+
+<p>Game Engines</p>
+
+</div>
+
+<div class="stat">
+
+<h2>5+</h2>
+
+<p>Programming Languages</p>
+
+</div>
+
+<div class="stat">
+
+<h2>100%</h2>
+
+<p>Passion</p>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>Interested in my work?</h2>
+
+<p>
+
+Explore more projects, certificates and upcoming games developed by Light40X.
+
+</p>
+
+<div class="cta-buttons">
+
+<a href="certificates.html" class="btn primary">
+
+<i class="fa-solid fa-award"></i>
+
+Certificates
 
 </a>
 
@@ -119,385 +531,6 @@ Back Home
 
 </div>
 
-</div>
-
-<div class="hero-image">
-
-<img src="images for home/home.jpeg" alt="Yassin">
-
-</div>
-
-</section>
-
-<!-- ==========================
-        QUICK STATS
-========================== -->
-
-<section class="stats">
-
-<div class="stat-card">
-
-<h2>10+</h2>
-
-<p>Projects</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2>3</h2>
-
-<p>Game Engines</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2>5+</h2>
-
-<p>Languages</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2>100%</h2>
-
-<p>Passion</p>
-
-</div>
-
-</section>
-
-<!-- ==========================
-      SEARCH BAR
-========================== -->
-
-<section class="search-section">
-
-<div class="search-box">
-
-<i class="fa-solid fa-magnifying-glass"></i>
-
-<input
-type="text"
-placeholder="Search Projects..."
-id="searchInput">
-
-</div>
-
-</section>
-
-<!-- ==========================
-        FILTERS
-========================== -->
-
-<section class="filters">
-
-<button class="filter active" data-filter="all">
-
-All
-
-</button>
-
-<button class="filter" data-filter="unity">
-
-Unity
-
-</button>
-
-<button class="filter" data-filter="godot">
-
-Godot
-
-</button>
-
-<button class="filter" data-filter="website">
-
-Website
-
-</button>
-
-<button class="filter" data-filter="javascript">
-
-JavaScript
-
-</button>
-
-</section>
-
-<!-- ==========================
-        PROJECTS
-========================== -->
-
-<section id="allProjects" class="projects-grid">
-
-  <div class="project-card unity">
-
-<img src="images for home/parking.png" alt="Parking Escape Master">
-
-<div class="project-content">
-
-<span class="category">Unity Game</span>
-
-<h3>Parking Escape Master</h3>
-
-<p>
-A traffic jam puzzle game with challenging levels,
-boosters and smooth gameplay.
-</p>
-
-<div class="tech-stack">
-
-<span>Unity</span>
-
-<span>C#</span>
-
-<span>Mobile</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video1.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="project-card website">
-
-<img src="images for home/web_color.png" alt="Counter Website">
-
-<div class="project-content">
-
-<span class="category">Website</span>
-
-<h3>Counter Website</h3>
-
-<p>
-Interactive counter website using HTML, CSS and JavaScript.
-</p>
-
-<div class="tech-stack">
-
-<span>HTML</span>
-
-<span>CSS</span>
-
-<span>JavaScript</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video2.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="project-card website">
-
-<img src="images for home/losin.png" alt="Login">
-
-<div class="project-content">
-
-<span class="category">Website</span>
-
-<h3>Animated Login UI</h3>
-
-<p>
-Modern login page with animations and responsive design.
-</p>
-
-<div class="tech-stack">
-
-<span>HTML</span>
-
-<span>CSS</span>
-
-<span>JavaScript</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video3.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="project-card godot">
-
-<img src="images for home/Screenshot 2026-06-30 153340.png" alt="Magic Power">
-
-<div class="project-content">
-
-<span class="category">Godot Game</span>
-
-<h3>Magic Power</h3>
-
-<p>
-A 2D action shooting game built using the Godot Engine.
-</p>
-
-<div class="tech-stack">
-
-<span>Godot</span>
-
-<span>GDScript</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video4.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="project-card unity">
-
-<img src="images for home/3d_2.png" alt="Fight For Alive">
-
-<div class="project-content">
-
-<span class="category">Unity Game</span>
-
-<h3>Fight For Alive</h3>
-
-<p>
-3D survival shooter featuring enemies, weapons and action gameplay.
-</p>
-
-<div class="tech-stack">
-
-<span>Unity</span>
-
-<span>C#</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video5.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-<div class="project-card unity">
-
-<img src="images for home/3d_1.png" alt="Try To Win">
-
-<div class="project-content">
-
-<span class="category">Unity Game</span>
-
-<h3>Try To Win</h3>
-
-<p>
-3D obstacle course game focused on timing and fast reactions.
-</p>
-
-<div class="tech-stack">
-
-<span>Unity</span>
-
-<span>C#</span>
-
-</div>
-
-<div class="project-buttons">
-
-<a href="video6.html" class="btn primary">
-<i class="fa-solid fa-play"></i>
-View Project
-</a>
-
-<a href="#">
-<i class="fa-brands fa-github"></i>
-GitHub
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="contact-cta">
-
-<h2>Want to see more?</h2>
-
-<p>
-I'm always building new games and websites.
-Stay tuned for future projects from Light40X.
-</p>
-
-<a href="index.html#contact" class="btn primary">
-
-<i class="fa-solid fa-paper-plane"></i>
-
-Contact Me
-
-</a>
-
 </section>
 
 <footer>
@@ -506,17 +539,17 @@ Contact Me
 
 <i class="fa-solid fa-gamepad"></i>
 
-Light40X
+Light40X Studio
 
 </div>
 
 <p>
 
-© 2026 Light40X. All Rights Reserved.
+© 2026 Light40X Studio. All Rights Reserved.
 
 </p>
 
-<div class="footer-social">
+<div class="socials">
 
 <a href="#"><i class="fa-brands fa-github"></i></a>
 
@@ -533,6 +566,22 @@ Light40X
 </div>
 
 </footer>
+
+<div class="image-modal">
+
+<img src="" alt="Preview">
+
+</div>
+
+<div class="video-modal">
+
+<video controls>
+
+<source src="" type="video/mp4">
+
+</video>
+
+</div>
 
 <script src="projects.js"></script>
 
