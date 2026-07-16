@@ -556,88 +556,16 @@ document.body.style.overflowX="hidden";
 
 console.log("🚀 Light40X Portfolio Ready");
 
-/*==========================================
-        VIEW MORE BUTTON
-==========================================*/
+const viewMoreBtn = document.querySelector(".view-more-btn");
 
-.view-more-container{
+if (viewMoreBtn) {
+    viewMoreBtn.addEventListener("click", function (e) {
+        e.preventDefault();
 
-display:flex;
+        this.style.transform = "scale(0.96)";
 
-justify-content:center;
-
-margin:70px 0;
-
-}
-
-.view-more-btn{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:12px;
-
-padding:18px 42px;
-
-background:linear-gradient(135deg,#4F8CFF,#00D4FF);
-
-color:#fff;
-
-text-decoration:none;
-
-font-size:18px;
-
-font-weight:700;
-
-border-radius:50px;
-
-transition:all .35s ease;
-
-box-shadow:0 15px 35px rgba(79,140,255,.35);
-
-}
-
-.view-more-btn:hover{
-
-transform:translateY(-6px) scale(1.05);
-
-background:linear-gradient(135deg,#00D4FF,#4F8CFF);
-
-box-shadow:0 25px 45px rgba(0,212,255,.45);
-
-}
-
-.view-more-btn i{
-
-transition:transform .35s ease;
-
-}
-
-.view-more-btn:hover i{
-
-transform:translateX(8px);
-
-}
-
-.view-more-btn:active{
-
-transform:scale(.96);
-
-}
-
-@media(max-width:768px){
-
-.view-more-btn{
-
-width:90%;
-
-justify-content:center;
-
-font-size:16px;
-
-padding:16px 24px;
-
-}
-
+        setTimeout(() => {
+            window.location.href = "projects.html";
+        }, 180);
+    });
 }
