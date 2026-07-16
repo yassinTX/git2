@@ -553,19 +553,12 @@ window.addEventListener("resize",()=>{
 document.body.style.overflowX="hidden";
 
 });
-
 console.log("🚀 Light40X Portfolio Ready");
 
 const viewMoreBtn = document.querySelector(".view-more-btn");
 
 if (viewMoreBtn) {
-    viewMoreBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        this.style.transform = "scale(0.96)";
-
-        setTimeout(() => {
-            window.location.href = "projects.html";
-        }, 180);
+    viewMoreBtn.addEventListener("click", function () {
+        window.location.href = "projects.html";
     });
 }
