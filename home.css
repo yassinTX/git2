@@ -1327,12 +1327,6 @@ transition-delay:.4s;
 
 }
 
-.gallery img:nth-child(5){
-
-transition-delay:.5s;
-
-}
-
 /* Mobile */
 
 @media(max-width:768px){
