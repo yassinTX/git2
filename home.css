@@ -1331,7 +1331,7 @@ left:0;
 
 top:0;
 
-width:100%;
+width:100px;
 
 height:100%;
 
@@ -1350,6 +1350,7 @@ opacity:0;
 transition:.35s;
 
 z-index:9999;
+
 
 }
 
