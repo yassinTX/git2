@@ -1274,10 +1274,10 @@ opacity:0;
 transform:translateY(60px) scale(.95);
 
 transition:
-opacity .8s ease,
-transform .8s ease,
+opacity .4s ease,
+transform .4s ease,
 box-shadow .4s ease,
-filter .4s ease;
+filter .2s ease;
 
 box-shadow:0 10px 25px rgba(0,0,0,.25);
 
@@ -1305,25 +1305,25 @@ filter:brightness(1.08);
 
 .gallery img:nth-child(1){
 
-transition-delay:.1s;
+transition-delay:.2s;
 
 }
 
 .gallery img:nth-child(2){
 
-transition-delay:.2s;
+transition-delay:.3s;
 
 }
 
 .gallery img:nth-child(3){
 
-transition-delay:.3s;
+transition-delay:.4s;
 
 }
 
 .gallery img:nth-child(4){
 
-transition-delay:.4s;
+transition-delay:.5s;
 
 }
 
