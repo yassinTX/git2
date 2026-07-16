@@ -9,19 +9,22 @@
 
 window.addEventListener("load", () => {
 
-    const loader = document.getElementById("loader");
+const loader=document.getElementById("loader");
 
-    if (loader) {
+if(loader){
 
-        setTimeout(() => {
+setTimeout(()=>{
 
-            loader.remove();
+loader.style.opacity="0";
 
-        }, 200);
+loader.style.visibility="hidden";
 
-    }
+},1500);
+
+}
 
 });
+
 // ============================
 // MOBILE MENU
 // ============================
