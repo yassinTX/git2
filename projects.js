@@ -3,7 +3,7 @@
 ==========================================*/
 
 /*=========================
-    SEARCH PROJECTS
+      SEARCH PROJECTS
 =========================*/
 
 const searchInput = document.getElementById("searchInput");
@@ -18,9 +18,9 @@ if (searchInput) {
         projectCards.forEach(card => {
 
             const title = card.querySelector("h3").textContent.toLowerCase();
-            const desc = card.querySelector("p").textContent.toLowerCase();
+            const text = card.textContent.toLowerCase();
 
-            if (title.includes(value) || desc.includes(value)) {
+            if (title.includes(value) || text.includes(value)) {
 
                 card.style.display = "block";
 
@@ -37,16 +37,16 @@ if (searchInput) {
 }
 
 /*=========================
-      FILTER BUTTONS
+      FILTER PROJECTS
 =========================*/
 
-const filters = document.querySelectorAll(".filter");
+const filterButtons = document.querySelectorAll(".filter");
 
-filters.forEach(button => {
+filterButtons.forEach(button => {
 
     button.addEventListener("click", () => {
 
-        filters.forEach(btn => btn.classList.remove("active"));
+        filterButtons.forEach(btn => btn.classList.remove("active"));
 
         button.classList.add("active");
 
@@ -58,11 +58,15 @@ filters.forEach(button => {
 
                 card.style.display = "block";
 
-            } else if (card.classList.contains(filter)) {
+            }
+
+            else if (card.classList.contains(filter)) {
 
                 card.style.display = "block";
 
-            } else {
+            }
+
+            else {
 
                 card.style.display = "none";
 
@@ -71,42 +75,6 @@ filters.forEach(button => {
         });
 
     });
-
-});
-
-/*=========================
-      SCROLL REVEAL
-=========================*/
-
-const revealItems = document.querySelectorAll(
-".project-card,.stat,.featured-project,.cta"
-);
-
-const revealObserver = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}else{
-
-entry.target.classList.remove("show");
-
-}
-
-});
-
-},{
-threshold:.2
-});
-
-revealItems.forEach(item=>{
-
-item.classList.add("hidden");
-
-revealObserver.observe(item);
 
 });
 
@@ -133,6 +101,70 @@ behavior:"smooth"
 }
 
 });
+
+});
+
+/*=========================
+      REVEAL ANIMATION
+=========================*/
+
+const hiddenItems=document.querySelectorAll(
+
+".project-card,.stat-card,.contact-cta"
+
+);
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+else{
+
+entry.target.classList.remove("show");
+
+}
+
+});
+
+},{
+threshold:.2
+});
+
+hiddenItems.forEach(item=>{
+
+item.classList.add("hidden");
+
+observer.observe(item);
+
+});
+
+/*=========================
+      HEADER EFFECT
+=========================*/
+
+const header=document.querySelector(".header");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>80){
+
+header.style.boxShadow="0 15px 40px rgba(0,0,0,.35)";
+header.style.background="rgba(8,17,31,.97)";
+
+}
+
+else{
+
+header.style.boxShadow="none";
+header.style.background="rgba(8,17,31,.92)";
+
+}
 
 });
 
@@ -174,27 +206,7 @@ link.classList.add("active");
 });
 
 /*=========================
-     HEADER SHADOW
-=========================*/
-
-const header=document.querySelector(".header");
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>50){
-
-header.style.boxShadow="0 15px 40px rgba(0,0,0,.35)";
-
-}else{
-
-header.style.boxShadow="none";
-
-}
-
-});
-
-/*=========================
-     BUTTON RIPPLE
+      BUTTON RIPPLE
 =========================*/
 
 document.querySelectorAll(".btn").forEach(btn=>{
@@ -205,7 +217,13 @@ const ripple=document.createElement("span");
 
 ripple.className="ripple";
 
-const size=Math.max(this.clientWidth,this.clientHeight);
+const size=Math.max(
+
+this.clientWidth,
+
+this.clientHeight
+
+);
 
 ripple.style.width=size+"px";
 
@@ -227,35 +245,31 @@ ripple.remove();
 
 });
 
-console.log("Projects JS Part 1 Loaded");
-
+console.log("Projects.js Part 1 Loaded");
 /*==========================================
         PROJECTS.JS - PART 2
 ==========================================*/
 
 /*=========================
-      IMAGE MODAL
+      IMAGE PREVIEW
 =========================*/
 
 const imageModal = document.querySelector(".image-modal");
 const modalImage = document.querySelector(".image-modal img");
 
-document.querySelectorAll(".project-card img,.featured-image img").forEach(img => {
+if (imageModal && modalImage) {
 
-    img.addEventListener("click", () => {
+    document.querySelectorAll(".project-card img, .hero-image img").forEach(img => {
 
-        if (imageModal) {
+        img.addEventListener("click", () => {
 
             imageModal.classList.add("active");
             modalImage.src = img.src;
+            modalImage.alt = img.alt;
 
-        }
+        });
 
     });
-
-});
-
-if (imageModal) {
 
     imageModal.addEventListener("click", () => {
 
@@ -266,212 +280,164 @@ if (imageModal) {
 }
 
 /*=========================
-      VIDEO MODAL
-=========================*/
-
-const videoModal = document.querySelector(".video-modal");
-const modalVideo = document.querySelector(".video-modal video");
-
-document.querySelectorAll(".video-btn").forEach(button => {
-
-    button.addEventListener("click", e => {
-
-        e.preventDefault();
-
-        const src = button.dataset.video;
-
-        if (videoModal && src) {
-
-            modalVideo.src = src;
-            videoModal.classList.add("active");
-            modalVideo.play();
-
-        }
-
-    });
-
-});
-
-if (videoModal) {
-
-    videoModal.addEventListener("click", () => {
-
-        modalVideo.pause();
-        modalVideo.src = "";
-        videoModal.classList.remove("active");
-
-    });
-
-}
-
-/*=========================
-      ESC CLOSE
-=========================*/
-
-document.addEventListener("keydown", e => {
-
-    if (e.key === "Escape") {
-
-        imageModal?.classList.remove("active");
-
-        if (videoModal) {
-
-            modalVideo.pause();
-            modalVideo.src = "";
-            videoModal.classList.remove("active");
-
-        }
-
-    }
-
-});
-
-/*=========================
       BACK TO TOP
 =========================*/
 
-const topButton = document.createElement("button");
+const backTop = document.createElement("button");
 
-topButton.innerHTML =
-'<i class="fa-solid fa-arrow-up"></i>';
+backTop.className = "back-top";
 
-topButton.className = "back-top";
+backTop.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
 
-document.body.appendChild(topButton);
+document.body.appendChild(backTop);
 
-Object.assign(topButton.style, {
+Object.assign(backTop.style,{
 
-    position: "fixed",
-    bottom: "30px",
-    right: "30px",
-    width: "55px",
-    height: "55px",
-    borderRadius: "50%",
-    border: "none",
-    background: "#4F8CFF",
-    color: "#fff",
-    fontSize: "20px",
-    cursor: "pointer",
-    display: "none",
-    zIndex: "9999",
-    transition: ".3s"
-
-});
-
-window.addEventListener("scroll", () => {
-
-    topButton.style.display =
-    window.scrollY > 400 ? "block" : "none";
+position:"fixed",
+right:"25px",
+bottom:"25px",
+width:"55px",
+height:"55px",
+borderRadius:"50%",
+border:"none",
+background:"#4F8CFF",
+color:"#fff",
+fontSize:"20px",
+cursor:"pointer",
+display:"none",
+zIndex:"9999",
+transition:".3s"
 
 });
 
-topButton.addEventListener("click", () => {
+window.addEventListener("scroll",()=>{
 
-    window.scrollTo({
-
-        top: 0,
-        behavior: "smooth"
-
-    });
+backTop.style.display =
+window.scrollY>400 ? "block" : "none";
 
 });
 
-/*=========================
-      COUNTERS
-=========================*/
+backTop.addEventListener("click",()=>{
 
-const stats = document.querySelectorAll(".stat h2");
+window.scrollTo({
 
-const counterObserver = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            const counter = entry.target;
-
-            const target =
-            parseInt(counter.innerText);
-
-            let value = 0;
-
-            const update = () => {
-
-                value += Math.ceil(target / 40);
-
-                if (value < target) {
-
-                    counter.innerText = value + "+";
-
-                    requestAnimationFrame(update);
-
-                } else {
-
-                    counter.innerText =
-                    counter.dataset.original ||
-                    counter.innerText;
-
-                }
-
-            };
-
-            counter.dataset.original =
-            counter.innerText;
-
-            update();
-
-            counterObserver.unobserve(counter);
-
-        }
-
-    });
+top:0,
+behavior:"smooth"
 
 });
-
-stats.forEach(stat => {
-
-    counterObserver.observe(stat);
 
 });
 
 /*=========================
-      MOUSE GLOW
+      COUNTER ANIMATION
 =========================*/
 
-const glow = document.querySelector(".mouse-glow");
+const statNumbers=document.querySelectorAll(".stat-card h2");
 
-document.addEventListener("mousemove", e => {
+const counterObserver=new IntersectionObserver(entries=>{
 
-    if (glow) {
+entries.forEach(entry=>{
 
-        glow.style.left = e.clientX + "px";
-        glow.style.top = e.clientY + "px";
+if(entry.isIntersecting){
 
-    }
+const counter=entry.target;
+
+const original=counter.innerText;
+
+const target=parseInt(original);
+
+if(isNaN(target)) return;
+
+let value=0;
+
+const update=()=>{
+
+value+=Math.ceil(target/40);
+
+if(value<target){
+
+counter.innerText=value+"+";
+requestAnimationFrame(update);
+
+}else{
+
+counter.innerText=original;
+
+}
+
+};
+
+update();
+
+counterObserver.unobserve(counter);
+
+}
+
+});
+
+});
+
+statNumbers.forEach(item=>{
+
+counterObserver.observe(item);
 
 });
 
 /*=========================
-      PARALLAX
+      HERO PARALLAX
 =========================*/
 
-const featuredImage =
-document.querySelector(".featured-image img");
+const heroImage=document.querySelector(".hero-image img");
 
-document.addEventListener("mousemove", e => {
+document.addEventListener("mousemove",e=>{
 
-    if (featuredImage) {
+if(heroImage){
 
-        const x =
-        (e.clientX / window.innerWidth - .5) * 12;
+const x=(e.clientX/window.innerWidth-.5)*10;
+const y=(e.clientY/window.innerHeight-.5)*10;
 
-        const y =
-        (e.clientY / window.innerHeight - .5) * 12;
+heroImage.style.transform=
+`rotateY(${x}deg) rotateX(${-y}deg)`;
 
-        featuredImage.style.transform =
-        `rotateY(${x}deg) rotateX(${-y}deg)`;
+}
 
-    }
+});
+
+/*=========================
+      PROJECT HOVER
+=========================*/
+
+projectCards.forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-10px)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0)";
+
+});
+
+});
+
+/*=========================
+      ESC CLOSE IMAGE
+=========================*/
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+
+if(imageModal){
+
+imageModal.classList.remove("active");
+
+}
+
+}
 
 });
 
@@ -479,27 +445,48 @@ document.addEventListener("mousemove", e => {
       AUTO YEAR
 =========================*/
 
-const footer =
-document.querySelector("footer p");
+const footerText=document.querySelector("footer p");
 
-if (footer) {
+if(footerText){
 
-    footer.innerHTML =
-    footer.innerHTML.replace(
-        "2026",
-        new Date().getFullYear()
-    );
+footerText.innerHTML=
+footerText.innerHTML.replace(
+"2026",
+new Date().getFullYear()
+);
 
 }
+
+/*=========================
+      PAGE LOADER
+=========================*/
+
+window.addEventListener("load",()=>{
+
+const loader=document.getElementById("loader");
+
+if(loader){
+
+loader.style.opacity="0";
+
+setTimeout(()=>{
+
+loader.remove();
+
+},400);
+
+}
+
+});
 
 /*=========================
       PERFORMANCE
 =========================*/
 
-window.addEventListener("resize", () => {
+window.addEventListener("resize",()=>{
 
-    document.body.style.overflowX = "hidden";
+document.body.style.overflowX="hidden";
 
 });
 
-console.log("🚀 Projects.js Loaded Successfully");
+console.log("🚀 Projects.js Ready");
