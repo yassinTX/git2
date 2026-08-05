@@ -50,49 +50,30 @@ header.style.boxShadow="none";
 });
 
 // ============================
-// PROGRESS BAR
-// ============================
-
-const progress=document.querySelector(".progress-bar");
-
-window.addEventListener("scroll",()=>{
-
-const winScroll=document.documentElement.scrollTop;
-
-const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-
-const scrolled=(winScroll/height)*100;
-
-progress.style.width=scrolled+"%";
-
-});
-
-// ============================
 // BACK TO TOP
 // ============================
 
-const topBtn=document.querySelector(".back-top");
+const topButton=document.getElementById("topButton");
 
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY>350){
+if(window.scrollY>300){
 
-topBtn.style.display="block";
+topButton.style.display="block";
 
 }else{
 
-topBtn.style.display="none";
+topButton.style.display="none";
 
 }
 
 });
 
-topBtn.addEventListener("click",()=>{
+topButton.addEventListener("click",()=>{
 
 window.scrollTo({
 
 top:0,
-
 behavior:"smooth"
 
 });
@@ -100,8 +81,10 @@ behavior:"smooth"
 });
 
 // ============================
-// SCROLL REVEAL
+// REVEAL ANIMATION
 // ============================
+
+const sections=document.querySelectorAll("section");
 
 const observer=new IntersectionObserver(entries=>{
 
@@ -119,38 +102,85 @@ entry.target.classList.add("show");
 threshold:.15
 });
 
-document.querySelectorAll(".policy section,.toc,.effective").forEach(item=>{
+sections.forEach(section=>{
 
-item.classList.add("hidden");
+section.classList.add("hidden");
 
-observer.observe(item);
-
-});
-
-// ============================
-// SMOOTH SCROLL
-// ============================
-
-document.querySelectorAll('.toc a').forEach(link=>{
-
-link.addEventListener("click",function(e){
-
-e.preventDefault();
-
-const target=document.querySelector(this.getAttribute("href"));
-
-target.scrollIntoView({
-
-behavior:"smooth",
-
-block:"start"
-
-});
-
-});
+observer.observe(section);
 
 });
 
 // ============================
-// ACTIVE TABLE OF CONTENTS
+// MOUSE GLOW
 // ============================
+
+const glow=document.createElement("div");
+
+glow.className="mouse-glow";
+
+document.body.appendChild(glow);
+
+Object.assign(glow.style,{
+
+position:"fixed",
+width:"400px",
+height:"400px",
+borderRadius:"50%",
+pointerEvents:"none",
+background:"radial-gradient(circle,#00D4FF22,transparent 70%)",
+transform:"translate(-50%,-50%)",
+zIndex:"-1"
+
+});
+
+document.addEventListener("mousemove",e=>{
+
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
+
+});
+
+// ============================
+// AUTO YEAR
+// ============================
+
+const footer=document.querySelector(".footer");
+
+if(footer){
+
+footer.innerHTML=footer.innerHTML.replace("2026",new Date().getFullYear());
+
+}
+
+// ============================
+// CSS FOR REVEAL
+// ============================
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+
+.hidden{
+
+opacity:0;
+transform:translateY(50px);
+transition:.8s ease;
+
+}
+
+.show{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+`;
+
+document.head.appendChild(style);
+
+// ============================
+// READY
+// ============================
+
+console.log("🔒 Privacy Policy Loaded");
