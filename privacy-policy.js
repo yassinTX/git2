@@ -1,169 +1,156 @@
-// ======================================
-// Light40X Privacy Policy
-// script.js
-// ======================================
+/*==========================================
+      LIGHT40X PRIVACY POLICY
+==========================================*/
 
-// Back To Top Button
-const topButton = document.querySelector(".top");
+// ============================
+// MOBILE MENU
+// ============================
 
-window.addEventListener("scroll", () => {
+const menuBtn = document.querySelector(".menu-btn");
+const nav = document.querySelector("nav");
 
-    if (window.scrollY > 250) {
-        topButton.style.display = "block";
-        topButton.style.opacity = "1";
-    } else {
-        topButton.style.opacity = "0";
+if(menuBtn){
 
-        setTimeout(() => {
-            if (window.scrollY <= 250)
-                topButton.style.display = "none";
-        }, 250);
-    }
+menuBtn.addEventListener("click",()=>{
+
+nav.classList.toggle("active");
 
 });
-
-topButton.addEventListener("click", () => {
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-
-});
-
-
-// ================================
-// Reveal Sections
-// ================================
-
-const sections = document.querySelectorAll("section");
-
-const observer = new IntersectionObserver(entries => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0)";
-
-        }
-
-    });
-
-}, {
-
-    threshold: .15
-
-});
-
-sections.forEach(section => {
-
-    section.style.opacity = "0";
-    section.style.transform = "translateY(40px)";
-    section.style.transition = ".7s ease";
-
-    observer.observe(section);
-
-});
-
-
-// ================================
-// Logo Animation
-// ================================
-
-const logo = document.querySelector(".logo");
-
-if (logo) {
-
-    logo.addEventListener("mousemove", () => {
-
-        logo.style.transform = "scale(1.08) rotate(-5deg)";
-
-    });
-
-    logo.addEventListener("mouseleave", () => {
-
-        logo.style.transform = "scale(1) rotate(0deg)";
-
-    });
 
 }
 
+document.querySelectorAll("nav a").forEach(link=>{
 
-// ================================
-// Mouse Glow Effect
-// ================================
+link.addEventListener("click",()=>{
 
-document.addEventListener("mousemove", e => {
-
-    document.body.style.background = `
-    radial-gradient(circle at ${e.clientX}px ${e.clientY}px,
-    rgba(0,174,255,.10),
-    transparent 220px),
-    linear-gradient(135deg,#071321,#0c1f38,#153c68)
-    `;
+nav.classList.remove("active");
 
 });
 
+});
 
-// ================================
-// Smooth Anchor Links
-// ================================
+// ============================
+// HEADER SHADOW
+// ============================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+const header=document.querySelector(".header");
 
-    anchor.addEventListener("click", function (e) {
+window.addEventListener("scroll",()=>{
 
-        e.preventDefault();
+if(window.scrollY>60){
 
-        document.querySelector(this.getAttribute("href"))
-            .scrollIntoView({
+header.style.boxShadow="0 15px 40px rgba(0,0,0,.35)";
 
-                behavior: "smooth"
+}else{
 
-            });
+header.style.boxShadow="none";
 
-    });
+}
 
 });
 
+// ============================
+// PROGRESS BAR
+// ============================
 
-// ================================
-// Page Loaded Animation
-// ================================
+const progress=document.querySelector(".progress-bar");
 
-window.addEventListener("load", () => {
+window.addEventListener("scroll",()=>{
 
-    const container = document.querySelector(".container");
+const winScroll=document.documentElement.scrollTop;
 
-    container.animate([
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 
-        {
-            opacity: 0,
-            transform: "translateY(40px)"
-        },
+const scrolled=(winScroll/height)*100;
 
-        {
-            opacity: 1,
-            transform: "translateY(0)"
-        }
-
-    ], {
-
-        duration: 800,
-        easing: "ease-out"
-
-    });
+progress.style.width=scrolled+"%";
 
 });
 
+// ============================
+// BACK TO TOP
+// ============================
 
-// ================================
-// Console Message
-// ================================
+const topBtn=document.querySelector(".back-top");
 
-console.log(
-"%cLight40X Privacy Policy",
-"color:#4db8ff;font-size:18px;font-weight:bold;"
-);
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>350){
+
+topBtn.style.display="block";
+
+}else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+// ============================
+// SCROLL REVEAL
+// ============================
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},{
+threshold:.15
+});
+
+document.querySelectorAll(".policy section,.toc,.effective").forEach(item=>{
+
+item.classList.add("hidden");
+
+observer.observe(item);
+
+});
+
+// ============================
+// SMOOTH SCROLL
+// ============================
+
+document.querySelectorAll('.toc a').forEach(link=>{
+
+link.addEventListener("click",function(e){
+
+e.preventDefault();
+
+const target=document.querySelector(this.getAttribute("href"));
+
+target.scrollIntoView({
+
+behavior:"smooth",
+
+block:"start"
+
+});
+
+});
+
+});
+
+// ============================
+// ACTIVE TABLE OF CONTENTS
+// ============================
